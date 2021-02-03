@@ -7,8 +7,8 @@ Source code contained in **source.py**.</br>
   <dd>bottomup_data.csv: Experiment on time complexity of bottom-up approach.</dd>
   <dd>topdown_data.csv: Experiment on time complexity of top-down approach.</dd>
   <dd>bruteforce.csv: Experiment on time complexity of bruteforce approach.</dd>
-  <dd>btm_optimized_memory_compare.csv: Experiment on memory complexity of bottom-up approach with optimization.</br>
-    On the left side, measuring memory allocated with n and W variables both changed</br>
+  <dd>btm_optimized_memory_compare.csv: Experiment on memory complexity of bottom-up approach with optimization. 
+    On the left side, measuring memory allocated with n and W variables both changed. 
     On the right side, measuring memory allocated with n changed and W unchaged.</dd>
 </dl>
 
