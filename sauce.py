@@ -40,6 +40,7 @@ def htop(snapshot, key_type='lineno', limit=3):
 def bruteForce(number, capacity, weights, values): 
     '''
     bruteForce approach to solve knapsack 0/1 problem
+    source: https://github.com/madcat1991/knapsack
     Input (from left to right): 
         number of items
         the capacity of the bag
