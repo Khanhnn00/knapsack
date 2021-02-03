@@ -1,4 +1,4 @@
-# The repository includes approaches to solve knapsack 0/1 problem. </br>
+# Approaches to solve knapsack 0/1 problem. </br>
 
 Source code contained in **source.py**.</br>
 
@@ -12,8 +12,8 @@ Source code contained in **source.py**.</br>
     On the right side, measuring memory allocated with n changed and W unchaged.</dd>
 </dl>
 
-**Input folder** contains inputs for test cases.
-**Output folder** contains outputs of according inputs given in **input folder**
+**Input folder** contains inputs for test cases.</br>
+**Output folder** contains outputs of according inputs given in **input folder**.</br>
 
 **cs112.ipynb**: file is used to predict runtime of each approach in different time complexity functions, using linear regression.
 
