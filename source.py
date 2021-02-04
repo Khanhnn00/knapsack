@@ -66,6 +66,30 @@ def bruteForce(number, capacity, weights, values):
                     best_combination[weight_cost.index(wc)] = 1
     return best_cost
 
+def printComponents(memoi, capacity, items,values, weights):
+    '''
+    traceback function for printing a string of 0 and 1
+    0 denotes the item at that index is not taken
+    1 denotes the item at that index is taken
+    only work with bottom-up approach without optimization
+    '''
+    temp = 0
+    components = [0] * items
+    w = capacity
+    res = memoi[items][w]    #0
+    for i in range(items, 0, -1): 
+        if res < 0:
+            break
+        if res != memoi[i-1][w]:
+            components[i-1] = 1
+            res -= values[i-1]
+            w = w - weights[i-1]
+            temp += values[i-1]
+        else:
+            continue
+    # print('test: {}'.format(temp))
+    return components
+
 def topDown(num, capacity, w, c): 
     '''
     top-down approach to solve knapsack 0/1 problem
@@ -140,6 +164,34 @@ def f(num, capacity, w, v):  #optimized
                 memoi[~(i&1)][j] = memoi[(i&1)][j] 
     return memoi
 
+def optimized_knapsack(num, capacity, w, v): 
+    '''
+    Another optimization for bottom-up approach 
+    '''
+    memoi = [0]*(capacity+1)   
+    for i in range(num): 
+        for j in range(capacity, w[i], -1): 
+            memoi[j] = max(memoi[j] , v[i] + memoi[j-w[i]])
+    return memoi[capacity]
+
+global nums, capacity, weights, values
+weights = []
+values = []
+with open('./input3.txt', 'r') as file:
+    for line in file:
+        nums = line.split()
+        items = int(nums[0])
+        capacity = int(nums[1])
+        for i in range(2, len(nums)):
+            if i % 2 == 0:
+                weights.append(int(nums[i]))
+            else:
+                values.append(int(nums[i]))
+file.close()
+
+#memoi = [[0 for x in range(capacity + 1)] for x in range(items + 1)]   #uncomment this if u are using top-down approach
+print(f(items, capacity, weights, values))
+
 '''
 Below is the code we use to conduct experiment on proving time and memory
 complexity of each approach
@@ -173,5 +225,5 @@ with open('btm_opt_2.csv', mode='w') as csvfile:
         mem = htop(snapshot)
         writer.writerow([str(items), str(capacity), str(end-start), str(mem)])
         del(temp)
-        if i>500 or int(end-start) > 300:
+        if i>500 or int(end-start) > 600:
             break
